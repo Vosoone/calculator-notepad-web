@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenSource Kalkulačka</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="theme-switcher">
+                <i class="fas fa-moon"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-sun"></i>
+            </div>
+            <div class="datetime">
+                <span id="date"></span>
+                <span id="time"></span>
+            </div>
+            <div class="settings">
+                <h3>Nastavení</h3>
+                <div class="settings-options">
+                    <div class="setting">
+                        <label for="calculator-type">Typ kalkulačky:</label>
+                        <select id="calculator-type">
+                            <option value="standard">Standardní</option>
+                            <option value="scientific">Vědecká</option>
+                            <option value="programmer">Programátorská</option>
+                        </select>
+                    </div>
+                    <div class="setting">
+                        <button id="view-history">Historie</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Calculator -->
+            <div class="calculator">
+                <div class="display" id="calc-display">0</div>
+                <div class="buttons" id="calc-buttons">
+                    <!--  -->
+                </div>
+            </div>
+
+            <!-- Notepad -->
+            <div class="notepad">
+                <div class="notepad-header">
+                    <h3>Zápisník</h3>
+                    <div class="notepad-controls">
+                        <button id="download-pdf" title="Stáhnout jako PDF"><i class="fas fa-file-pdf"></i></button>
+                        <button id="download-txt" title="Stáhnout jako TXT"><i class="fas fa-file-alt"></i></button>
+                        <button id="clear-notepad" title="Smazat celý obsah"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+                <!-- Toolbar for formatting -->
+                <div class="notepad-toolbar">
+                    <button class="format-btn" data-command="bold" title="Tučný text"><i class="fas fa-bold"></i></button>
+                    <button class="format-btn" data-command="italic" title="Kurzíva"><i class="fas fa-italic"></i></button>
+                    <button class="format-btn" data-command="underline" title="Podtržený text"><i class="fas fa-underline"></i></button>
+                    <button class="format-btn" data-command="delete" title="Smazat označený text"><i class="fas fa-trash"></i></button>
+                    <button class="format-btn" id="brush-tool" title="Štětec pro kreslení"><i class="fas fa-paint-brush"></i></button>
+                    <input type="color" id="text-color-picker" title="Změnit barvu textu">
+                </div>
+                <!-- Canvas for drawing -->
+                <canvas id="drawing-canvas"></canvas>
+                <div class="notepad-content" contenteditable="true" id="notepad-content">
+                    <span id="notepad-placeholder">Napište si poznámky zde...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div id="history-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Historie Výpočtů</h2>
+            <ul id="history-list">
+                <!-- History -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
